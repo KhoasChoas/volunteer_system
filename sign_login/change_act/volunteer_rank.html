@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>志愿者管理 - 志愿者管理系统</title>
+    <link rel="stylesheet" href="../create/css/core.css">
+    <link rel="stylesheet" href="../create/css/icon.css">
+    <link rel="stylesheet" href="../create/css/home.css">
+    <style>
+        .container {
+            padding: 20px;
+        }
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .button-container {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="active.js"></script>
+    <script src="user.js"></script>
+</head>
+<body>
+
+    <header class="ydc-header">
+        <div class="ydc-entered">
+            <div class="ydc-header-content ydc-flex">
+                <div class="ydc-column">
+                    <div class="ydc-column-user">
+                        <div class="ydc-user-info">
+                            <h1>湘潭大学</h1>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<main>
+	<!-- <div class="ydc-column ydc-column-2">
+	    <div class="ydc-menu">
+	        <ul>
+	
+	            <li class="ydc-menu-item">
+	                <a href="#" class="active">
+	                    <i class="ydc-icon ydc-icon-find fl"></i>
+	                    志愿时长排行
+	                </a>
+	            </li>
+	        </ul>
+	    </div>
+	</div> -->
+	<div class="ydc-flex">
+	    <nav class="ydc-column ydc-column-2">
+	        <div class="ydc-menu">
+	            <ul>
+	                <li class="ydc-menu-item">
+	                    <a href="volunteer_rank.html" class="active">
+	                        <i class="ydc-icon ydc-icon-find fl"></i>
+	                        志愿时长排行榜
+	                    </a>
+	                </li>
+	                <li class="ydc-menu-item">
+	                    <a href="../main/main.html" class="">
+	                        <i class="ydc-icon ydc-icon-find fl"></i>
+	                        返回主页
+	                    </a>
+	                </li>
+	            </ul>
+	        </div>
+	    </nav>
+	    <section class="ydc-column ydc-column-8">
+	        <div class="container">
+	            <div class="button-container">
+	               <!-- <form id="add-activity-form">
+	                    <button type="submit" class="button">添加活动</button>
+	                </form>
+	                <form id="edit-activity-form">
+							<button type="submit" class="button">修改活动</button>
+	                </form> -->
+	            </div>
+	            <h2 class="section-title">志愿时长排行榜</h2>
+	            <table id="registration-table">
+	                <thead>
+	                    <tr>
+							<th>Rank</th>
+							<th>姓名</th>
+	                        <th>志愿时长</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <!-- 动态加载内容 -->
+	                </tbody>
+	            </table>
+	        </div>
+	    </section>
+	</div>
+</main>
+
+<script>
+$(document).ready(function() {
+	
+	$.ajax({
+        url: "http://192.168.163.167:5000/user/rank", // 更新 URL
+        method: 'GET',
+        success: function(response) {
+            // 检查响应状态是否为成功
+            if (response.state === 1) {
+                let Users = response.data; // 直接访问 data 属性
+                let userRows = '';
+                Users.forEach(User => {
+                    // 使用活动对象的属性来构建 HTML 字符串
+                    userRows += `
+                    <tr>
+						<td>${User.rank}</td>
+                        <td>${User.name}</td>
+						<td>${User.time}</td>
+                    </tr>`;
+                });
+                $('#registration-table tbody').html(userRows);
+			}
+		}
+	});
+});
+</script>
+
+</body>
+</html>

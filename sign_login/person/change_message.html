@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>发布活动--志愿者管理系统</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="iTunesArtwork@2x.png" sizes="114x114" rel="apple-touch-icon-precomposed">
+        <link type="text/css" rel="stylesheet" href="css/core.css">
+        <link type="text/css" rel="stylesheet" href="css/icon.css">
+        <link type="text/css" rel="stylesheet" href="css/home.css">
+			<link type="text/css" rel="stylesheet" href="css/styles.css">
+        <script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <!-- head YDC begin -->
+        <header class="ydc-header">
+            <div class="ydc-entered">
+                <div class="ydc-header-content ydc-flex">
+                    <div class="ydc-column">
+                        <div class="ydc-column-user">
+                            <div class="ydc-user-info">
+								<h1>湘潭大学</h1>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- head YDC end -->
+        <!-- content YDC begin -->
+        <section>
+                <div class="ydc-flex">
+                    <!-- left begin -->
+                    <div class="ydc-column ydc-column-2">
+                        <div class="ydc-menu">
+                            <ul>
+                                <li class="ydc-menu-item">
+                                    <a href="../main/main.html" class="">
+                                        <i class="ydc-icon ydc-icon-home fl"></i>
+                                        返回主页
+                                    </a>
+                                </li>
+                                <li class="ydc-menu-item">
+                                    <a href="person_home.html" class="">
+                                        <i class="ydc-icon ydc-icon-find fl"></i>
+                                        个人信息查看
+                                    </a>
+                                </li>
+                                
+                                <li class="ydc-menu-item">
+                                    <span class="ydc-menu-sub-title">
+                                        <i class="ydc-icon ydc-icon-set fl"></i>
+                                        修改
+                                    </span>
+                                    <ul>
+                                        <li>
+                                            <a href="change_message.html" class="active">修改个人信息</a>
+                                        </li>
+										<li>
+										    <a href="change_password.html">修改密码</a>
+										</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- left end -->
+                    <!-- right begin -->
+                    <div class="container">
+                        <h1>个人信息管理</h1>
+                        <form id="profileForm">
+                            <div class="form-group">
+                                <label for="username">用户名:</label>
+                                <input type="text" id="username" name="username" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="sex">性别:</label>
+                                <select id="sex" name="sex">
+                                    <option value="male">男</option>
+                                    <option value="female">女</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="account">账号:</label>
+                                <input type="text" id="account" name="account" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">电话:</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">邮箱:</label>
+                                <input type="email" id="email" name="email">
+                            </div>
+                    		       <div class="form-group">
+                    		           <label for="intro">个人介绍:</label>
+                                       <textarea id="intro" name="intro" rows="4" cols="50"></textarea>
+                    		       </div>
+                            <div class="buttons-group">
+                                <button type="submit" id="saveSubmit">保存提交</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- right end -->
+                </div>
+            </div>
+        </section>
+        <!-- content YDC end -->
+        
+		<script>
+		$(document).ready(function() {
+		    // 获取 URL 参数
+		    const urlParams = new URLSearchParams(window.location.search);
+		    const adminaccount = urlParams.get('account');
+			let st = urlParams.get('username');
+			let et = urlParams.get('sex');
+			let sp = urlParams.get('phone');
+			let sc = urlParams.get('email');
+			let rn = urlParams.get('intro');
+		    // 根据活动ID获取活动信息并预先填好表单
+			
+			$('#account').val(padminaccount);
+			$('#username').val(st);
+			$('#sex').val(et);
+			$('#phone').val(sp);
+			$('#email').val(sc);
+			$('#intro').val(rn);
+			
+		    // 确认修改活动按钮点击事件
+		    $('#edit-activity-form').submit(function(event) {
+		        event.preventDefault(); // 阻止表单默认提交行为
+		        // 获取表单数据
+		        const updatedProject = {
+		            account: $('#account').val(),
+		            username: $('#username').val(),
+		            sex: $('#sex').val(),
+		            phone: $('#phone').val(),
+		            email: $('#email').val(),
+		            intro: $('#intro').val(),
+		        };
+		        // 发送 AJAX 请求
+		        $.ajax({
+		            url: 'http://192.168.163.167:5000/admin',
+		            method: 'POST',
+		            data: JSON.stringify(updatedProject),
+		            contentType: 'application/json',
+		            success: function(response) {
+		                if (response.state === 1) {
+		                    alert('活动修改成功');
+		                    window.location.href = 'person_home.html'; // 返回活动列表页面
+		                } else {
+		                    alert('修改活动失败');
+		                }
+		            },
+		            error: function(xhr, status, error) {
+		                console.error('Error editing activity:', error);
+		                alert('修改活动失败');
+		            }
+		        });
+		    });
+		
+		});
+		</script>
+    </body>
+</html>

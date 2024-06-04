@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ===== 引入 ===== -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.15/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>主页</title>
+  </head>
+  <body id="body-pd">
+    <!-- 左侧 -->
+    <div class="l-navbar" id="navbar">
+      <nav class="nav">
+        <div>
+          <div class="nav__brand">
+            <ion-icon
+              name="menu-outline"
+              class="nav__toggle"
+              id="nav-toggle"
+            ></ion-icon>
+            <a href="#" class="nav__logo"></a>
+          </div>
+          <div class="nav__list">
+            <a href="../person/person_home.html" id="person" class="nav__link">
+              <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">个人信息</span>
+            </a>
+            <a href="../change_act/act_message.html" class="nav__link">
+              <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">查看活动信息</span>
+            </a>
+            <a href="../create/release.html" class="nav__link">
+              <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">创建活动</span>
+            </a>
+            <a href="../change_act/volunteer_rank.html" class="nav__link">
+              <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">查看志愿时长排行榜</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="../sign_login.html" class="nav__link">
+          <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+          <span class="nav__name">退出登陆</span>
+        </a>
+      </nav>
+    </div>
+    <!-- 右侧 -->
+    <!-- 活动介绍 -->
+    <div class="blog-slider">
+      <div class="blog-slider_wrp swiper-wrapper">
+        <div class="blog-slider_item swiper-slide">
+          <div class="blog-slider_img">
+            <img src="act1.png" alt="" />
+          </div>
+          <div class="blog-slider_content">
+            <span class="blog-slider_code">2024-5-18</span>
+            <div class="blog-slider_title">
+              "00后”追光|听阿甘深情讲述罕见的旅程主题团课
+            </div>
+          </div>
+        </div>
+
+        <div class="blog-slider_item swiper-slide">
+          <div class="blog-slider_img">
+            <img src="act2.png" alt="" />
+          </div>
+          <div class="blog-slider_content">
+            <span class="blog-slider_code">2024-4-3</span>
+            <div class="blog-slider_title">
+              “00后”追光——聆听抗美援朝铁道神兵尚瑞尧讲他的战火青春
+            </div>
+          </div>
+        </div>
+
+        <div class="blog-slider_item swiper-slide">
+          <div class="blog-slider_img">
+            <img src="act3.png" alt="" />
+          </div>
+          <div class="blog-slider_content">
+            <span class="blog-slider_code">2024-1-25</span>
+            <div class="blog-slider_title">
+              拉响校园电诈警报铃，共织法律维权知识网
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="blog-slider_pagination"></div>
+    </div>
+    <!-- ===== 引入icon ===== -->
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+
+    <!-- ===== 引入js ===== -->
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.15/swiper-bundle.min.js"></script>
+    <script src="./script.js"></script>
+	
+	<script>
+		$('#person').click(function() {
+			const urlParams = new URLSearchParams(window.location.search);
+			const adminAccount = urlParams.get('account');
+		    // 跳转到修改页面
+		    window.location.href = `../person/person_home.html?account=${adminAccount}`;
+		});
+	</script>
+
+  </body>
+</html>

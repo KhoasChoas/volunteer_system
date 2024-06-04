@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>创建活动</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="iTunesArtwork@2x.png" sizes="114x114" rel="apple-touch-icon-precomposed">
+        <link type="text/css" rel="stylesheet" href="css/core.css">
+        <link type="text/css" rel="stylesheet" href="css/icon.css">
+        <link type="text/css" rel="stylesheet" href="css/home.css">
+        <script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <!-- head YDC begin -->
+        <header class="ydc-header">
+            <div class="ydc-entered">
+                <div class="ydc-header-content ydc-flex">
+                    <div class="ydc-column">
+                        <div class="ydc-column-user">
+                            <div class="ydc-user-info">
+								<h1>湘潭大学</h1>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- head YDC end -->
+        <!-- content YDC begin -->
+        <section>
+                <div class="ydc-flex">
+                    <!-- left begin -->
+                            <div class="ydc-column ydc-column-2">
+                                <div class="ydc-menu">
+                                    <ul>
+                                        <li class="ydc-menu-item">
+                                            <a href="release.html" class="active">
+                                                <i class="ydc-icon ydc-icon-find fl"></i>
+                                                创建活动
+                                            </a>
+                                        </li>
+                                        <li class="ydc-menu-item">
+                                            <a href="../main/main.html" class="">
+                                                <i class="ydc-icon ydc-icon-find fl"></i>
+                                                返回主页
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                    <!-- left end -->
+                    <!-- right begin -->
+                    <div class="ydc-column ydc-column-8">
+                        <div class="ydc-release-content">
+                            <div class="ydc-tabPanel ydc-tabPanel-release">
+                                <div class="ydc-release-tab-head">
+                                    <ul>
+                                        <li class="hit">创建活动</li>
+                                    </ul>
+                                </div>
+                                <form id="myForm">
+									<div class="ydc-panes">
+									        <div class="ydc-pane" style="display:block;">
+									            <div class="ydc-release-form-group ">
+									                <div class="ydc-release-form-group-input">
+									                    <label class="ydc-form-group-label">标题：</label>
+									                    <input style="width:89.999%" type="text" id="title" name="title" class="ydc-form-control" title="" placeholder="请输入活动标题 " onkeyUp="textLimitCheck(this,30)"  required/>
+									                    <div class="ydc-form-group-jl">
+									                        <span id="messageCount">0</span>
+									                        /30
+									                    </div>
+									                </div>
+									            </div>
+												<div class="ydc-release-form-group-input ydc-release-form-group-ms clearfix">
+												    <label class="ydc-form-group-label">开始时间：</label>
+												    <input style="width:89.999%" type="datetime-local" id="start_time" name="start_time" class="ydc-form-control" title="" placeholder="格式YYYY-MM-DD HH:MM:SS " required/>
+												</div>
+												<div class="ydc-release-form-group-input ydc-release-form-group-ms clearfix">
+												    <label class="ydc-form-group-label">结束时间：</label>
+												    <input style="width:89.999%" type="datetime-local" id="end_time" name="end_time" class="ydc-form-control" title="" placeholder="格式YYYY-MM-DD HH:MM:SS" required/>
+												</div>
+												<div class="ydc-release-form-group-input ydc-release-form-group-ms clearfix">
+												    <label class="ydc-form-group-label">省份：</label>
+												    <input style="width:89.999%" type="text" id="situation_province" name="situation_province" class="ydc-form-control" title="" placeholder="请输入省份" required/>
+												</div>
+												<div class="ydc-release-form-group-input ydc-release-form-group-ms clearfix">
+												    <label class="ydc-form-group-label">城市：</label>
+												    <input style="width:89.999%" type="text" id="situation_ctiy" name="situation_city" class="ydc-form-control" title="" placeholder="请输入城市" required/>
+												</div>
+												<div class="ydc-release-form-group-input ydc-release-form-group-ms clearfix">
+												    <label class="ydc-form-group-label">志愿时长：</label>
+												    <input style="width:89.999%" type="text" id="value" name="value" class="ydc-form-control" title="" placeholder="请输入志愿时长" required/>
+												</div>
+												<div class="ydc-release-form-group-input ydc-release-form-group-ms clearfix">
+												    <label class="ydc-form-group-label">活动人数：</label>
+												    <input style="width:89.999%" type="text" id="require_num" name="require_num" class="ydc-form-control" title="" placeholder="请输入活动人数" required/>
+												</div>
+									            <div class="aui-card-form-item preview  aui-news">
+									                    <div class="ydc-btn">
+									                        <button type="submit" id="submitButton">提交</button> 
+									                    </div>
+									            </div>
+									    </div>
+									</div>
+								</form>
+                        </div>
+                    </div>
+                    <!-- right end -->
+                </div>
+            </div>
+        </section>
+        <!-- content YDC end -->
+            
+        <script type="text/javascript">
+            
+	    function textLimitCheck(thisArea, maxLength){
+	        if (thisArea.value.length > maxLength){
+	            alert(maxLength + ' 个字限制. \r超出的将自动清除.');
+	            thisArea.value = thisArea.value.substring(0, 30);
+	            thisArea.focus();    }
+	        messageCount.innerText = thisArea.value.length;
+	        messageCount1.innerText = thisArea.value.length;
+	        messageCount2.innerText = thisArea.value.length;
+	    }//标题输入框字数限制
+		
+        </script>
+		
+		
+		<script>
+		    $('#submitButton').click(function() {  
+		      event.preventDefault(); // 阻止表单的默认提交行为  
+		      
+		      // 获取用户输入的数据  
+		      var formData = $('#myForm').serialize();  
+		      // 使用 $.ajax 发送 POST 请求  
+		      $.ajax({  
+		        url: 'http://192.168.163.167:5000/project', // 后端接收数据的 URL  
+		        method: 'POST',
+		        data: formData,
+				success: function(response) {
+					data = response.data;
+				     if (response.state === 1) {
+				          alert('活动创建成功');
+				          location.reload(); // 刷新页面
+				                            } 
+			         else {
+				           console.log(data);
+				                            }
+				          },
+				error: function(xhr, status, error) {  
+				         console.error('Error publishing activity:', error);
+				         alert('创建活动失败');
+				}
+		      });  
+		    });
+		</script>
+    </body>
+</html>

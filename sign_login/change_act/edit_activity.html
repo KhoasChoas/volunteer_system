@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>修改活动 - 志愿者管理系统</title>
+    <link rel="stylesheet" href="../create/css/core.css">
+    <link rel="stylesheet" href="../create/css/icon.css">
+    <link rel="stylesheet" href="../create/css/home.css">
+    <style>
+        .container {
+            padding: 20px;
+        }
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .button-container {
+            text-align: right;
+        }
+        .button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<header class="ydc-header">
+    <div class="ydc-entered">
+        <div class="ydc-header-content ydc-flex">
+            <div class="ydc-column">
+                <div class="ydc-column-user">
+                    <div class="ydc-user-photo">
+                        <a href="javascript:;">
+                            <img src="img/photo.png" alt="User Photo">
+                        </a>
+                    </div>
+                    <div class="ydc-user-info">
+                        <div class="ydc-user-info-func ydc-flex">
+                            <a href="../main/main.html">退出</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <h2 class="section-title">修改活动</h2>
+        <form id="edit-activity-form">
+            <div class="form-group">
+                <label for="title">名称</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="start_time">开始时间</label>
+               <input type="datetime-local" id="start_time" name="start_time" required>
+				<!-- <input type="Text" id="start_time" name="start_time" required> -->
+            </div>
+            <div class="form-group">
+                <label for="end_time">结束时间</label>
+                <input type="datetime-local" id="end_time" name="end_time" required>
+				<!-- <input type="Text" id="end_time" name="end_time" required> -->
+            </div>
+            <div class="form-group">
+                <label for="situation_province">地点-省份</label>
+                <input type="text" id="situation_province" name="situation_province" required>
+            </div>
+            <div class="form-group">
+                <label for="situation_city">地点-城市</label>
+                <input type="text" id="situation_city" name="situation_city" required>
+            </div>
+            <div class="form-group">
+                <label for="require_num">所需志愿者数量</label>
+                <input type="number" id="require_num" name="require_num" required>
+            </div>
+            <div class="form-group">
+                <label for="value">给予的志愿时长</label>
+                <input type="number" id="value" name="value" required>
+            </div>
+            <div class="button-container">
+                <button type="button" class="button" id="edit-activity-cancel">取消</button>
+                <button type="submit" class="button" id="edit-activity-confirm">确认修改</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<script>
+$(document).ready(function() {
+    // 获取 URL 参数
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectTitle = urlParams.get('title');
+	let st = urlParams.get('start_time');
+	let et = urlParams.get('end_time');
+	let sp = urlParams.get('situation_province');
+	let sc = urlParams.get('situation_city');
+	let rn = urlParams.get('require_num');
+	let vl = urlParams.get('value');
+    // 根据活动ID获取活动信息并预先填好表单
+	
+	$('#title').val(projectTitle);
+	$('#start_time').val(st);
+	$('#end_time').val(et);
+	$('#situation_province').val(sp);
+	$('#situation_city').val(sc);
+	$('#require_num').val(rn);
+	$('#value').val(vl);
+	
+    // $.ajax({
+    //     url: `http://192.168.163.167:5000/admin/projects${projectTitle}`, // 更新 URL
+    //     method: 'GET',
+    //     success: function(response) {
+    //         if (response.state === 1) {
+    //             const project = response.data;
+    //             // 填好表单数据
+    //             $('#id').val(project.id);
+    //             $('#title').val(project.title);
+    //             $('#start_time').val(project.start_time);
+    //             $('#end_time').val(project.end_time);
+    //             $('#situation_province').val(project.situation_province);
+    //             $('#situation_city').val(project.situation_city);
+    //             $('#require_num').val(project.require_num);
+    //             $('#value').val(project.value);
+    //         } else {
+    //             alert('获取活动信息失败');
+    //         }
+    //     },
+    //     error: function(xhr, status, error) {
+    //         console.error('Error fetching activity:', error);
+    //         alert('获取活动信息失败');
+    //     }
+    // });
+
+    // 确认修改活动按钮点击事件
+    $('#edit-activity-form').submit(function(event) {
+        event.preventDefault(); // 阻止表单默认提交行为
+        // 获取表单数据
+        const updatedProject = {
+            title: $('#title').val(),
+            start_time: $('#start_time').val(),
+            end_time: $('#end_time').val(),
+            situation_province: $('#situation_province').val(),
+            situation_city: $('#situation_city').val(),
+            require_num: $('#require_num').val(),
+            value: $('#value').val()
+        };
+        // 发送 AJAX 请求
+        $.ajax({
+            url: 'http://192.168.163.167:5000/project/update',
+            method: 'POST',
+            data: JSON.stringify(updatedProject),
+            contentType: 'application/json',
+            success: function(response) {
+                if (response.state === 1) {
+                    alert('活动修改成功');
+                    window.location.href = 'act_message.html'; // 返回活动列表页面
+                } else {
+                    alert('修改活动失败');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error editing activity:', error);
+                alert('修改活动失败');
+            }
+        });
+    });
+
+    // 取消按钮点击事件
+    $('#edit-activity-cancel').click(function() {
+        window.location.href = 'act_message.html'; // 返回活动列表页面
+    });
+});
+</script>
+
+</body>
+</html>

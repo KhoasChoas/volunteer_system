@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>发布活动--志愿者管理系统</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="iTunesArtwork@2x.png" sizes="114x114" rel="apple-touch-icon-precomposed">
+        <link type="text/css" rel="stylesheet" href="css/core.css">
+        <link type="text/css" rel="stylesheet" href="css/icon.css">
+        <link type="text/css" rel="stylesheet" href="css/home.css">
+		<link type="text/css" rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <!-- head YDC begin -->
+        <header class="ydc-header">
+            <div class="ydc-entered">
+                <div class="ydc-header-content ydc-flex">
+                    <div class="ydc-column">
+                        <div class="ydc-column-user">
+                            <div class="ydc-user-info">
+								<h1>湘潭大学</h1>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- head YDC end -->
+        <!-- content YDC begin -->
+        <section>
+                <div class="ydc-flex">
+                    <!-- left begin -->
+                    <div class="ydc-column ydc-column-2">
+                        <div class="ydc-menu">
+                            <ul>
+                                <li class="ydc-menu-item">
+                                    <a href="../main/main.html" class="">
+                                        <i class="ydc-icon ydc-icon-home fl"></i>
+                                        返回主页
+                                    </a>
+                                </li>
+                                <li class="ydc-menu-item">
+                                    <a href="person_home.html" class="active">
+                                        <i class="ydc-icon ydc-icon-find fl"></i>
+                                        个人信息查看
+                                    </a>
+                                </li>
+                                
+                                <li class="ydc-menu-item">
+                                    <span class="ydc-menu-sub-title">
+                                        <i class="ydc-icon ydc-icon-set fl"></i>
+                                        修改
+                                    </span>
+                                    <ul>
+                                        <li>
+                                            <a href="change_message.html">修改个人信息</a>
+                                        </li>
+										<li>
+										    <a href="change_password.html">修改密码</a>
+										</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- left end -->
+                    <!-- right begin -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>个人信息展示</title>
+<style>
+#profile {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 37.5rem; /* 600px */
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+#profile h2 {
+    color: #ff6980;
+    margin-bottom: 50px;
+    font-size: 1.5rem;
+}
+
+#profile p {
+    margin-bottom: 45px;
+    font-size: 1rem;
+}
+
+#profile p:last-child {
+    margin-bottom: 0;
+}
+
+.label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.value {
+    margin-left: 10px;
+}
+
+#introduction {
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+/* 添加图标 */
+.label:before {
+    font-family: "Font Awesome\ 6 Pro";
+    margin-right: 5px;
+    font-size: 1.2rem;
+}
+
+#username:before {
+    content: "\f007";
+}
+
+.label[for="gender"]:before {
+    content: "\f183";
+}
+
+.label[for="account"]:before {
+    content: "\f023";
+}
+
+.label[for="phone"]:before {
+    content: "\f095";
+}
+
+.label[for="email"]:before {
+    content: "\f0e0";
+}
+
+/* 字体美化 */
+body {
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+}
+
+h1, h2 {
+    font-family: 'Arial', sans-serif;
+}
+
+#introduction {
+    line-height: 1.6;
+}
+</style>
+</head>
+<body>
+<div id="profile">
+    <h1>管理员个人信息</h1>
+    <h2 id="username"></h2>
+    <p><label class="label" for="gender">性别:</label><span id="sex" class="value"></span></p>
+    <p><label class="label" for="account">账号:</label><span id="account" class="value"></span></p>
+    <p><label class="label" for="phone">电话:</label><span id="phone" class="value"></span></p>
+    <p><label class="label" for="email">邮箱:</label><span id="email" class="value"></span></p>
+    <p id="intro"></p>
+</div>
+</body>
+</html>
+                    <!-- right end -->
+                </div>
+            </div>
+        </section>
+        <!-- content YDC end -->
+		<script src="script.js"></script>
+		<script>
+				$('#person').click(function() {
+					const urlParams = new URLSearchParams(window.location.search);
+					const adminAccount = urlParams.get('account');
+				    // 跳转到修改页面
+				    window.location.href = `change_message.html?account=${adminAccount}`;
+				});
+		</script>
+		<script>
+			$('#person').click(function() {
+				const urlParams = new URLSearchParams(window.location.search);
+				const adminAccount = urlParams.get('account');
+			    // 跳转到修改页面
+			    window.location.href = `change_password.html?account=${adminAccount}`;
+			});
+		</script>
+    </body>
+</html>

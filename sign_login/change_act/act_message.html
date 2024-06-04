@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>志愿者管理 - 志愿者管理系统</title>
+    <link rel="stylesheet" href="../create/css/core.css" />
+    <link rel="stylesheet" href="../create/css/icon.css" />
+    <link rel="stylesheet" href="../create/css/home.css" />
+    <style>
+      .container {
+        padding: 20px;
+      }
+      .section-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .button-container {
+        text-align: right;
+        margin-bottom: 10px;
+      }
+      .button {
+        padding: 10px 20px;
+        margin-right: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      .button:hover {
+        background-color: #45a049;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="active.js"></script>
+    <script src="user.js"></script>
+  </head>
+  <body>
+    <header class="ydc-header">
+      <div class="ydc-entered">
+        <div class="ydc-header-content ydc-flex">
+          <div class="ydc-column">
+            <div class="ydc-column-user">
+              <div class="ydc-user-info">
+                <h1>湘潭大学</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="ydc-flex">
+        <div class="ydc-column ydc-column-2">
+          <div class="ydc-menu">
+            <ul>
+              <li class="ydc-menu-item">
+                <a href="#" class="active">
+                  <i class="ydc-icon ydc-icon-find fl"></i>
+                  志愿者管理
+                </a>
+              </li>
+              <li class="ydc-menu-item">
+                <a href="../main/main.html" class="">
+                  <i class="ydc-icon ydc-icon-find fl"></i>
+                  返回主页
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <section class="ydc-column ydc-column-8">
+          <div class="container">
+            <div class="button-container">
+              <!-- <form id="add-activity-form">
+                        <button type="submit" class="button">添加活动</button>
+                    </form>
+                    <form id="edit-activity-form">
+							<button type="submit" class="button">修改活动</button>
+                    </form> -->
+            </div>
+            <h2 class="section-title">活动信息</h2>
+            <table id="activity-table">
+              <thead>
+                <tr>
+                  <th>活动名称</th>
+                  <th>开始时间</th>
+                  <th>结束时间</th>
+                  <th>地点-省份</th>
+                  <th>地点-城市</th>
+                  <th>所需志愿者数量</th>
+                  <th>给予的志愿时长</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- 动态加载内容 -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

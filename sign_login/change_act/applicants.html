@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>志愿者管理 - 志愿者管理系统</title>
+    <link rel="stylesheet" href="../create/css/core.css">
+    <link rel="stylesheet" href="../create/css/icon.css">
+    <link rel="stylesheet" href="../create/css/home.css">
+    <style>
+        .container {
+            padding: 20px;
+        }
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .button-container {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="active.js"></script>
+    <script src="user.js"></script>
+</head>
+<body>
+
+<header class="ydc-header">
+    <div class="ydc-entered">
+        <div class="ydc-header-content ydc-flex">
+            <div class="ydc-column">
+                <div class="ydc-column-user">
+                    <div class="ydc-user-photo">
+                        <a href="javascript:;">
+                            <img src="img/photo.png" alt="User Photo">
+                        </a>
+                    </div>
+                    <div class="ydc-user-info">
+                        <div class="ydc-user-info-func ydc-flex">
+                            <a href="../main/main.html">退出</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="ydc-flex">
+        <nav class="ydc-column ydc-column-2">
+            <div class="ydc-menu">
+                <ul>
+                    <li class="ydc-menu-item">
+                        <span class="ydc-menu-sub-title">
+                            <i class="ydc-icon ydc-icon-file fl"></i> 管理
+                        </span>
+                        <ul>
+                            <li><a href="#" class="active">志愿者管理</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <section class="ydc-column ydc-column-8">
+            <div class="container">
+                <div class="button-container">
+                   <!-- <form id="add-activity-form">
+                        <button type="submit" class="button">添加活动</button>
+                    </form>
+                    <form id="edit-activity-form">
+							<button type="submit" class="button">修改活动</button>
+                    </form> -->
+                </div>
+        
+                <h2 class="section-title">报名人员信息</h2>
+                <table id="registration-table">
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>联系方式</th>
+							<th>审核状态</th>
+							<th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 动态加载内容 -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</main>
+<script>
+$(document).ready(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectTitle = urlParams.get('title');
+    console.log(projectTitle);
+
+    $.ajax({
+        url: `http://192.168.163.167:5000/user/?title=${projectTitle}`, // 更新 URL
+        method: 'GET',
+        success: function(response) {
+            // 检查响应状态是否为成功
+            if (response.state === 1) {
+                let Users = response.data; // 直接访问 data 属性
+                let userRows = '';
+                Users.forEach(User => {
+                    // 使用活动对象的属性来构建 HTML 字符串
+                    let judgeStatus = User.judge === true ? "已通过" : "未通过";
+                    userRows += `
+                        <tr>
+                            <td>${User.name}</td>
+                            <td>${User.phone}</td>
+                            <td>${judgeStatus}</td>
+                            <td><button class="check-button">通过</button></td>
+                        </tr>`;
+                });
+
+                $('#registration-table tbody').html(userRows);
+
+                // 使用事件委托绑定事件处理器
+                $(document).on('click', '.check-button', function() {
+                    // alert('Button clicked'); // 调试信息
+
+                    // 获取当前行的数据
+                    let row = $(this).closest('tr');
+                    // alert('Row found'); // 调试信息
+
+                    let userName = row.find('td').eq(0).text();
+                    // alert(`User Name: ${userName}`); // 调试信息
+
+                    // 发送 AJAX 请求，将 is_start 设置为 1
+                    $.ajax({
+                        url: `http://192.168.163.167:5000/user/activate?name=${userName}`,
+                        method: 'POST',
+                        success: function(response) {
+                            // alert('AJAX request successful'); // 调试信息
+                            if (response.state === 1) {
+                                alert('审核通过成功');
+                                location.reload(); // 刷新页面以显示审核状态
+                            } else {
+                                alert('审核通过失败');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error publishing activity:', error);
+                            alert('审核通过失败');
+                        }
+                    });
+                });
+            } else {
+                console.error('获取用户信息失败');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching users:', error);
+        }
+    });
+});
+</script>
+
+</body>
+</html>
