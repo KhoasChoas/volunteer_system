@@ -10,6 +10,7 @@ $(document).ready(function() {
                 let projectRows = '';
                 Projects.forEach(Project => {
                     // 使用活动对象的属性来构建 HTML 字符串
+					let judgeStatus = Project.is_start === true ? "已发布" : "未发布";
                     projectRows += `
                     <tr>
                         <td>${Project.title}</td>
@@ -20,6 +21,7 @@ $(document).ready(function() {
                         <td>${Project.situation_city}</td>
                         <td>${Project.require_num}</td>
                         <td>${Project.value}</td>
+						<td>${judgeStatus}</td>
                         <td>
                             <button class="edit-button">修改</button>
                             <button class="publish-button">发布</button>
@@ -35,12 +37,12 @@ $(document).ready(function() {
                     // 获取当前行的数据
                     let row = $(this).closest('tr');
                     let projectTitle = row.find('td').eq(0).text();
-					let st = row.find('td').eq(1).text();
-					let et = row.find('td').eq(2).text();
-					let sp = row.find('td').eq(3).text();
-					let sc = row.find('td').eq(4).text();
-					let rn = row.find('td').eq(5).text();
-					let vl = row.find('td').eq(6).text();
+					let st = row.find('td').eq(2).text();
+					let et = row.find('td').eq(3).text();
+					let sp = row.find('td').eq(4).text();
+					let sc = row.find('td').eq(5).text();
+					let rn = row.find('td').eq(6).text();
+					let vl = row.find('td').eq(7).text();
 					console.log(projectTitle);
                     // 跳转到修改页面，传递活动ID
                     window.location.href = `edit_activity.html?title=${projectTitle}&start_time=${st}&end_time=${et}&situation_province=${sp}&situation_city=${sc}&require_num=${rn}&value=${vl}`;
