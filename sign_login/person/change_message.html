@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>发布活动--志愿者管理系统</title>
+        <title>修改个人信息--志愿者管理系统</title>
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <link href="iTunesArtwork@2x.png" sizes="114x114" rel="apple-touch-icon-precomposed">
         <link type="text/css" rel="stylesheet" href="css/core.css">
@@ -15,17 +15,18 @@
     <body>
         <!-- head YDC begin -->
         <header class="ydc-header">
-            <div class="ydc-entered">
-                <div class="ydc-header-content ydc-flex">
-                    <div class="ydc-column">
-                        <div class="ydc-column-user">
-                            <div class="ydc-user-info">
-								<h1>湘潭大学</h1>  
+                    <div class="ydc-entered">
+                        <div class="ydc-header-content ydc-flex">
+                            <div class="ydc-column">
+        						<h1 style="letter-spacing:4px;color: #FFFFFF ;font-family: "新宋体";">志愿者管理系统<br>volunteer system</h1>
                             </div>
+							<div class="ydc-user-photo">
+								<a href="javascript:;">
+									<img src="img/photo.png" title="" about="" alt="">
+								</a>
+							</div>
                         </div>
                     </div>
-                </div>
-            </div>
         </header>
         <!-- head YDC end -->
         <!-- content YDC begin -->
@@ -72,7 +73,7 @@
                         <form id="profileForm">
                             <div class="form-group">
                                 <label for="username">用户名:</label>
-                                <input type="text" id="username" name="username" value="">
+                                <input type="text" id="username" name="username" value="简Simplest">
                             </div>
                             <div class="form-group">
                                 <label for="sex">性别:</label>
@@ -83,19 +84,19 @@
                             </div>
                             <div class="form-group">
                                 <label for="account">账号:</label>
-                                <input type="text" id="account" name="account" readonly>
+                                <input type="text" id="account" name="account" value="202205566627" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="phone">电话:</label>
-                                <input type="tel" id="phone" name="phone">
+                                <input type="tel" id="phone" name="phone" value="202205566627">
                             </div>
                             <div class="form-group">
                                 <label for="email">邮箱:</label>
-                                <input type="email" id="email" name="email">
+                                <input type="email" id="email" name="email" value="202205566627@qq.com">
                             </div>
                     		       <div class="form-group">
                     		           <label for="intro">个人介绍:</label>
-                                       <textarea id="intro" name="intro" rows="4" cols="50"></textarea>
+                                       <textarea id="intro" name="intro" rows="4" cols="50">湘潭大学，计算机科学与技术一班</textarea>
                     		       </div>
                             <div class="buttons-group">
                                 <button type="submit" id="saveSubmit">保存提交</button>
@@ -110,22 +111,29 @@
         
 		<script>
 		$(document).ready(function() {
-		    // 获取 URL 参数
-		    const urlParams = new URLSearchParams(window.location.search);
-		    const adminaccount = urlParams.get('account');
-			let st = urlParams.get('username');
-			let et = urlParams.get('sex');
-			let sp = urlParams.get('phone');
-			let sc = urlParams.get('email');
-			let rn = urlParams.get('intro');
-		    // 根据活动ID获取活动信息并预先填好表单
+		 //    // 获取 URL 参数
+		 //    const urlParams = new URLSearchParams(window.location.search);
+		 //    const adminaccount = urlParams.get('account');
+			// alert(adminaccount);
+			// let st = urlParams.get('username');
+			// let et = urlParams.get('sex');
+			// let sp = urlParams.get('phone');
+			// let sc = urlParams.get('email');
+			// let rn = urlParams.get('intro');
+		 //    // 根据活动ID获取活动信息并预先填好表单
 			
-			$('#account').val(padminaccount);
-			$('#username').val(st);
-			$('#sex').val(et);
-			$('#phone').val(sp);
-			$('#email').val(sc);
-			$('#intro').val(rn);
+			// // $('#account').val(padminaccount);
+			// // $('#username').val(st);
+			// // $('#sex').val(et);
+			// // $('#phone').val(sp);
+			// // $('#email').val(sc);
+			// // $('#intro').val(rn);
+			
+			// document.getElementById('username').textContent = st;
+			// document.getElementById('sex').textContent = et;
+			// document.getElementById('phone').textContent = sp;
+			// document.getElementById('email').textContent = sc
+			// document.getElementById('intro').textContent = rn;
 			
 		    // 确认修改活动按钮点击事件
 		    $('#edit-activity-form').submit(function(event) {

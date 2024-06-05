@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // 加载活动信息
     $.ajax({
-        url: 'http://192.168.163.167:5000/admin/projects', // 更新 URL
+        url: 'http://192.168.163.167:5000/admin/projects?account=202205566627', // 更新 URL
         method: 'GET',
         success: function(response) {
             // 检查响应状态是否为成功
@@ -13,6 +13,7 @@ $(document).ready(function() {
                     projectRows += `
                     <tr>
                         <td>${Project.title}</td>
+						<td><img src="${Project.image_url}" alt="${Project.title}" style="width: 50px; height: 50px;"></td>
                         <td>${Project.start_time}</td>
                         <td>${Project.end_time}</td>
                         <td>${Project.situation_province}</td>

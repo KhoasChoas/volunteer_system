@@ -7,10 +7,15 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     />
     <title>志愿者管理 - 志愿者管理系统</title>
-    <link rel="stylesheet" href="../create/css/core.css" />
-    <link rel="stylesheet" href="../create/css/icon.css" />
-    <link rel="stylesheet" href="../create/css/home.css" />
+    <link rel="stylesheet" href="../person/css/core.css" />
+    <link rel="stylesheet" href="../person/css/home.css" />
+    <link rel="stylesheet" href="../person/css/icon.css" />
     <style>
+		h1 {
+		color: #ffffff;
+		text-align: center;
+		margin-bottom: 40px;
+		}
       .container {
         padding: 20px;
       }
@@ -47,25 +52,30 @@
       .button:hover {
         background-color: #45a049;
       }
+	  .center-align {
+	  	text-align: center;
+	  }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="active.js"></script>
     <script src="user.js"></script>
   </head>
   <body>
-    <header class="ydc-header">
-      <div class="ydc-entered">
-        <div class="ydc-header-content ydc-flex">
-          <div class="ydc-column">
-            <div class="ydc-column-user">
-              <div class="ydc-user-info">
-                <h1>湘潭大学</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+   <header class="ydc-header">
+               <div class="ydc-entered">
+                   <div class="ydc-header-content ydc-flex">
+                       <div class="ydc-column">
+   						<h1 style="letter-spacing:4px;font-family: "新宋体";">志愿者管理系统<br>volunteer system</h1>
+                       </div>
+					   <div class="ydc-user-photo">
+					   	<a href="javascript:;">
+					   		<img src="../create/img/photo.png" title="" about="" alt="">
+					   	</a>
+					   </div>
+                   </div>
+				   </div>
+               </div>
+   </header>
 
     <main>
       <div class="ydc-flex">
@@ -102,13 +112,14 @@
               <thead>
                 <tr>
                   <th>活动名称</th>
+				  <th>活动图片</th>
                   <th>开始时间</th>
                   <th>结束时间</th>
                   <th>地点-省份</th>
                   <th>地点-城市</th>
                   <th>所需志愿者数量</th>
                   <th>给予的志愿时长</th>
-                  <th>操作</th>
+                  <th class="center-align">操作</th> 
                 </tr>
               </thead>
               <tbody>

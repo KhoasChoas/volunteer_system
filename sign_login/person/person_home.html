@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>发布活动--志愿者管理系统</title>
+        <title>个人主页--志愿者管理系统</title>
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <link href="iTunesArtwork@2x.png" sizes="114x114" rel="apple-touch-icon-precomposed">
         <link type="text/css" rel="stylesheet" href="css/core.css">
@@ -16,17 +16,18 @@
     <body>
         <!-- head YDC begin -->
         <header class="ydc-header">
-            <div class="ydc-entered">
-                <div class="ydc-header-content ydc-flex">
-                    <div class="ydc-column">
-                        <div class="ydc-column-user">
-                            <div class="ydc-user-info">
-								<h1>湘潭大学</h1>  
+                    <div class="ydc-entered">
+                        <div class="ydc-header-content ydc-flex">
+                            <div class="ydc-column">
+        						<h1 style="letter-spacing:4px;color: #FFFFFF ;font-family: "新宋体";">志愿者管理系统<br>volunteer system</h1>
                             </div>
+							<div class="ydc-user-photo">
+								<a href="javascript:;">
+									<img src="img/photo.png" title="" about="" alt="">
+								</a>
+							</div>
                         </div>
                     </div>
-                </div>
-            </div>
         </header>
         <!-- head YDC end -->
         <!-- content YDC begin -->
@@ -170,10 +171,10 @@ h1, h2 {
 <div id="profile">
     <h1>管理员个人信息</h1>
     <h2 id="username"></h2>
-    <p><label class="label" for="gender">性别:</label><span id="sex" class="value"></span></p>
-    <p><label class="label" for="account">账号:</label><span id="account" class="value"></span></p>
-    <p><label class="label" for="phone">电话:</label><span id="phone" class="value"></span></p>
-    <p><label class="label" for="email">邮箱:</label><span id="email" class="value"></span></p>
+    <p><label class="label" for="gender">性别:</label><span id="sex" name="sex" class="value"></span></p>
+    <p><label class="label" for="account">账号:</label><span id="account" name="account"class="value"></span></p>
+    <p><label class="label" for="phone">电话:</label><span id="phone" name="phone" class="value"></span></p>
+    <p><label class="label" for="email">邮箱:</label><span id="email" name="email" class="value"></span></p>
     <p id="intro"></p>
 </div>
 </body>
